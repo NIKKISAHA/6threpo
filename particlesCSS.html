@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle System</title>
+</head>
+<body>
+    <div class="glowing">
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+    </div>
+    <div class="glowing">
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+    </div>
+    <div class="glowing">
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+    </div>
+    <div class="glowing">
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:1;"></span>
+    </div>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(5, 5, 5);
+            min-height: 100vh;
+        }
+        .glowing{
+            position: relative;
+            min-width: 750px;
+            height: 750px;
+            margin: -150px;
+            transform-origin: right;
+            /* background-color: rgb(28, 11, 184); */
+        }
+        .glowing:nth-child(even){
+            transform-origin: left;
+        }
+        span{
+            position: absolute;
+            top:calc(80px * var(--i));
+            right:calc(80px * var(--i));
+            left:calc(80px * var(--i));
+            bottom:calc(80px * var(--i));
+            /* background-color: cyan; */
+        }
+        span::before{
+            content: '';
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            top: 50%;
+            left: -8px;
+            /* background-color: darkgreen; */
+            border-radius: 50%;
+        }
+      
+        
+        span:nth-child(3n+1)::before{
+            background-color: rgb(201, 92, 255);
+            box-shadow: 0 0 20px rgb(201, 92, 255),
+                        0 0 40px rgb(201, 92, 255),
+                        0 0 60px rgb(201, 92, 255),
+                        0 0 80px rgb(201, 92, 255),
+                        0 0 100px rgb(201, 92, 255);
+        }
+        span:nth-child(3n+2)::before{
+            background-color:gold;
+            box-shadow: 0 0 20px gold,
+                        0 0 40px gold,
+                        0 0 60px gold,
+                        0 0 80px gold,
+                        0 0 100px gold;
+        }
+        span:nth-child(3n+3)::before{
+            background-color: rgb(255, 60, 60);
+            box-shadow: 0 0 20px rgb(255, 60, 60),
+                        0 0 40px rgb(255, 60, 60),
+                        0 0 80px rgb(255, 60, 60),
+                        0 0 100px rgb(255, 60, 60);
+        }
+        span:nth-child(3n+1){
+            animation: animate 10s alternate infinite;
+        }
+        @keyframes animate
+        {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+
+        }
+        span:nth-child(3n+3){
+            animation: animate-reverse 7s alternate infinite;
+        }
+        span:nth-child(3n+2){
+            animation: animate-reverse 10s alternate-reverse infinite;
+        }
+        @keyframes animate-reverse
+        {
+            0%{
+                transform: rotate(360deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+
+        }
+    </style>
+</body>
+</html>
